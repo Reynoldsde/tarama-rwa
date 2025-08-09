@@ -1,0 +1,1416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tarama Rwanda | Creative Connect Hub</title>
+    <meta name="description" content="Empowering Rwanda's creative community through innovative events, talent development, and cultural celebration. Join our vibrant network of artists, creators, and innovators." />
+    <meta name="author" content="Tarama Rwanda" />
+    <meta name="keywords" content="Rwanda, creative, arts, events, community, artists, culture, entertainment, festival, talent" />
+    
+    <meta property="og:title" content="Tarama Rwanda | Creative Connect Hub" />
+    <meta property="og:description" content="Empowering Rwanda's creative community through innovative events, talent development, and cultural celebration." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@lovable_dev" />
+    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Reset and Variables */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            /* 2070 Futuristic Color Palette */
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #1a1a2e;
+            --bg-glass: rgba(255, 255, 255, 0.03);
+            --bg-glass-strong: rgba(255, 255, 255, 0.08);
+            
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0b8;
+            --text-accent: #00d4ff;
+            
+            --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient-accent: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --gradient-hero: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            --gradient-glass: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+            
+            --shadow-glow: 0 0 40px rgba(102, 126, 234, 0.3);
+            --shadow-intense: 0 20px 60px rgba(0, 0, 0, 0.5);
+            --shadow-glass: 0 8px 32px rgba(31, 38, 135, 0.37);
+            
+            --border-glass: 1px solid rgba(255, 255, 255, 0.18);
+            --border-glow: 1px solid rgba(102, 126, 234, 0.5);
+            
+            --radius: 20px;
+            --radius-large: 32px;
+            
+            --blur: blur(20px);
+            --blur-strong: blur(40px);
+        }
+        
+        /* Base Styles */
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.2) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        /* Advanced Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+        
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: var(--shadow-glow); }
+            50% { box-shadow: 0 0 60px rgba(102, 126, 234, 0.6); }
+        }
+        
+        @keyframes slide-up {
+            from { transform: translateY(60px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        @keyframes scale-in {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        
+        @keyframes gradient-shift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        @keyframes matrix-rain {
+            0% { transform: translateY(-100vh) rotateZ(0deg); }
+            100% { transform: translateY(100vh) rotateZ(360deg); }
+        }
+        
+        @keyframes orbit {
+            from { transform: rotate(0deg) translateX(50px) rotate(0deg); }
+            to { transform: rotate(360deg) translateX(50px) rotate(-360deg); }
+        }
+        
+        /* Particle System */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: var(--text-accent);
+            border-radius: 50%;
+            animation: matrix-rain linear infinite;
+        }
+        
+        /* Loading Screen - 2070 Style */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            backdrop-filter: var(--blur-strong);
+        }
+        
+        .loading-content {
+            text-align: center;
+            position: relative;
+        }
+        
+        .loading-gif {
+            width: 300px;
+            height: 300px;
+            object-fit: contain;
+            margin: 0 auto;
+            border-radius: 50%;
+            box-shadow: var(--shadow-glow);
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .loading-text {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 5rem;
+            font-weight: 800;
+            background: var(--gradient-hero);
+            background-size: 400% 400%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: scale-in 0.8s ease-out, gradient-shift 3s ease infinite;
+            text-shadow: 0 0 30px rgba(102, 126, 234, 0.5);
+        }
+        
+        /* Navigation - Glassmorphism */
+        .navbar {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% - 40px);
+            max-width: 1200px;
+            background: var(--bg-glass);
+            backdrop-filter: var(--blur);
+            border: var(--border-glass);
+            border-radius: var(--radius-large);
+            padding: 1rem 2rem;
+            z-index: 1000;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .navbar:hover {
+            background: var(--bg-glass-strong);
+            box-shadow: var(--shadow-glass);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-decoration: none;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .logo::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-accent);
+            transition: width 0.3s ease;
+        }
+        
+        .logo:hover::after {
+            width: 100%;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .nav-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-primary);
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+        
+        .nav-link:hover {
+            color: var(--text-primary);
+            transform: translateY(-2px);
+        }
+        
+        .nav-link:hover::before {
+            left: 0;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: var(--radius);
+            transition: all 0.3s ease;
+        }
+        
+        .mobile-menu-btn:hover {
+            background: var(--bg-glass);
+        }
+        
+        /* Main Content */
+        .main-content {
+            margin-top: 120px;
+            min-height: calc(100vh - 120px);
+        }
+        
+        .page {
+            display: none;
+            animation: slide-up 0.6s ease-out;
+        }
+        
+        .page.active {
+            display: block;
+        }
+        
+        /* Hero Section - Immersive 3D */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            background: var(--gradient-hero);
+            background-size: 400% 400%;
+            animation: gradient-shift 8s ease infinite;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: 
+                radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: float 20s linear infinite;
+            opacity: 0.3;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            padding: 0 2rem;
+        }
+        
+        .hero h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 900;
+            margin-bottom: 2rem;
+            text-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            animation: slide-up 1s ease-out 0.2s both;
+        }
+        
+        .hero p {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            margin-bottom: 3rem;
+            opacity: 0.9;
+            font-weight: 400;
+            animation: slide-up 1s ease-out 0.4s both;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: slide-up 1s ease-out 0.6s both;
+        }
+        
+        /* Buttons - 2070 Style */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.2rem 2.5rem;
+            background: var(--bg-glass);
+            color: var(--text-primary);
+            text-decoration: none;
+            border-radius: var(--radius-large);
+            font-weight: 600;
+            font-size: 1.1rem;
+            border: var(--border-glass);
+            backdrop-filter: var(--blur);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            border: none;
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-primary);
+            transition: left 0.4s ease;
+            z-index: -1;
+        }
+        
+        .btn:hover {
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: var(--shadow-glow);
+            border: var(--border-glow);
+        }
+        
+        .btn:hover::before {
+            left: 0;
+        }
+        
+        .btn-primary {
+            background: var(--gradient-primary);
+            animation: pulse-glow 3s ease-in-out infinite;
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+        
+        .btn-outline:hover {
+            background: var(--bg-glass-strong);
+            border-color: var(--text-accent);
+        }
+        
+        /* Sections */
+        .section {
+            padding: 6rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .section h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            text-align: center;
+            margin-bottom: 4rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 800;
+            position: relative;
+        }
+        
+        .section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--gradient-accent);
+            border-radius: 2px;
+        }
+        
+        /* Grid Layouts */
+        .grid {
+            display: grid;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .grid-3 {
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        }
+        
+        .grid-2 {
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+        }
+        
+        /* Cards - Advanced Glassmorphism */
+        .card {
+            background: var(--bg-glass);
+            backdrop-filter: var(--blur);
+            border: var(--border-glass);
+            border-radius: var(--radius-large);
+            padding: 2.5rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: var(--gradient-accent);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px) rotateX(5deg);
+            box-shadow: var(--shadow-intense);
+            background: var(--bg-glass-strong);
+            border-color: rgba(102, 126, 234, 0.5);
+        }
+        
+        .card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .card h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+            font-weight: 700;
+        }
+        
+        .card p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            font-size: 1.1rem;
+        }
+        
+        .card ul {
+            margin-top: 1.5rem;
+            list-style: none;
+        }
+        
+        .card li {
+            color: var(--text-secondary);
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        
+        .card li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--text-accent);
+            font-weight: bold;
+        }
+        
+        /* Gallery - 3D Grid */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+            perspective: 1000px;
+        }
+        
+        .gallery-item {
+            aspect-ratio: 1;
+            background: var(--bg-glass);
+            backdrop-filter: var(--blur);
+            border: var(--border-glass);
+            border-radius: var(--radius-large);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            font-weight: 600;
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        
+        .gallery-item::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: var(--gradient-accent);
+            border-radius: 50%;
+            transition: all 0.6s ease;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+        }
+        
+        .gallery-item:hover {
+            transform: rotateY(10deg) rotateX(10deg) scale(1.05);
+            color: var(--text-primary);
+            box-shadow: var(--shadow-glow);
+        }
+        
+        .gallery-item:hover::before {
+            width: 200%;
+            height: 200%;
+        }
+        
+        /* Forms - Futuristic */
+        .form {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 3rem;
+            background: var(--bg-glass);
+            backdrop-filter: var(--blur);
+            border: var(--border-glass);
+            border-radius: var(--radius-large);
+        }
+        
+        .form-group {
+            margin-bottom: 2rem;
+            position: relative;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            font-size: 1.1rem;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 1.2rem 1.5rem;
+            background: var(--bg-glass);
+            border: var(--border-glass);
+            border-radius: var(--radius);
+            color: var(--text-primary);
+            font-size: 1.1rem;
+            backdrop-filter: var(--blur);
+            transition: all 0.3s ease;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: var(--text-accent);
+            box-shadow: 0 0 20px rgba(74, 172, 254, 0.3);
+            background: var(--bg-glass-strong);
+        }
+        
+        .form-input::placeholder {
+            color: var(--text-secondary);
+        }
+        
+        .form-textarea {
+            min-height: 150px;
+            resize: vertical;
+            font-family: inherit;
+        }
+        
+        /* Store Cards */
+        .store-card {
+            text-align: center;
+            position: relative;
+        }
+        
+        .price {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--text-accent);
+            margin: 1.5rem 0;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        
+        /* Footer - Immersive */
+        .footer {
+            background: var(--bg-secondary);
+            position: relative;
+            margin-top: 6rem;
+            overflow: hidden;
+        }
+        
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: var(--gradient-hero);
+        }
+        
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 2rem 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .footer h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            margin-bottom: 1.5rem;
+            font-size: 1.4rem;
+            color: var(--text-primary);
+            font-weight: 700;
+        }
+        
+        .footer ul {
+            list-style: none;
+        }
+        
+        .footer li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        
+        .footer a:hover {
+            color: var(--text-accent);
+            transform: translateX(5px);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: var(--text-secondary);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-links a {
+            width: 50px;
+            height: 50px;
+            background: var(--bg-glass);
+            border: var(--border-glass);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            backdrop-filter: var(--blur);
+        }
+        
+        .social-links a:hover {
+            background: var(--gradient-primary);
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: var(--shadow-glow);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .navbar {
+                top: 10px;
+                width: calc(100% - 20px);
+                padding: 1rem;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--bg-glass);
+                backdrop-filter: var(--blur);
+                border: var(--border-glass);
+                border-radius: var(--radius);
+                flex-direction: column;
+                padding: 1rem;
+                margin-top: 1rem;
+                box-shadow: var(--shadow-glass);
+            }
+            
+            .nav-menu.active {
+                display: flex;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .grid-3, .grid-2 {
+                grid-template-columns: 1fr;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+            
+            .section {
+                padding: 4rem 1rem;
+            }
+        }
+        
+        /* Utility Classes */
+        .hidden { display: none !important; }
+        .text-center { text-align: center; }
+        .mt-4 { margin-top: 2rem; }
+        .mb-4 { margin-bottom: 2rem; }
+        
+        /* Scroll Animations */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+        
+        .scroll-reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--bg-secondary);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--gradient-primary);
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--gradient-accent);
+        }
+    </style>
+</head>
+<body>
+    <!-- Particle System -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Loading Screen -->
+    <div id="loadingScreen" class="loading-screen">
+        <div class="loading-content">
+            <img id="loadingGif" src="https://i.pinimg.com/originals/ee/d0/58/eed0584db8fc25a571cd443b31fe681d.gif" alt="Loading animation" class="loading-gif">
+            <h1 id="loadingText" class="loading-text hidden">Tarama</h1>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="navbar hidden">
+        <div class="nav-container">
+            <a href="#" class="logo" onclick="showPage('home')">Tarama Rwanda</a>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#" class="nav-link" onclick="showPage('home')">Home</a></li>
+                <li><a href="#" class="nav-link" onclick="showPage('services')">Services</a></li>
+                <li><a href="#" class="nav-link" onclick="showPage('gallery')">Gallery</a></li>
+                <li><a href="#" class="nav-link" onclick="showPage('about')">About</a></li>
+                <li><a href="#" class="nav-link" onclick="showPage('events')">Events</a></li>
+                <li><a href="#" class="nav-link" onclick="showPage('store')">Store</a></li>
+                <li><a href="#" class="nav-link" onclick="showPage('community')">Community</a></li>
+                <li><a href="#" class="nav-link" onclick="showPage('blog')">Blog</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="mainContent" class="main-content hidden">
+        <!-- Home Page -->
+        <div id="home" class="page active">
+            <section class="hero">
+                <div class="hero-content">
+                    <h1>Welcome to Tarama Rwanda</h1>
+                    <p>Empowering Rwanda's creative community through innovative events, talent development, and cultural celebration</p>
+                    <div class="hero-buttons">
+                        <a href="#" class="btn btn-primary" onclick="showPage('services')">Explore Our Services</a>
+                        <a href="#" class="btn btn-outline" onclick="showPage('about')">Learn More</a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section scroll-reveal">
+                <h2>What We Do</h2>
+                <div class="grid grid-3">
+                    <div class="card">
+                        <h3>Event Management</h3>
+                        <p>From concept to execution, we create unforgettable experiences that showcase Rwanda's vibrant creative scene with cutting-edge technology and artistic excellence.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Creative Projects</h3>
+                        <p>Innovative collaborations that push boundaries and celebrate artistic expression in all its forms, blending traditional Rwandan culture with futuristic vision.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Talent Supply</h3>
+                        <p>Connecting exceptional creative talent with opportunities to shine and grow in their craft, fostering the next generation of artistic innovators.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section scroll-reveal">
+                <h2>Recent Success Stories</h2>
+                <div class="grid grid-2">
+                    <div class="card">
+                        <h3>"Exceptional Event Management"</h3>
+                        <p>"Tarama Rwanda transformed our vision into reality. Their attention to detail and creative flair made our event unforgettable. Professional, innovative, and truly passionate about what they do."</p>
+                        <p style="margin-top: 1.5rem; font-weight: 600; color: var(--text-accent);">- Sarah Uwimana, Cultural Festival Director</p>
+                    </div>
+                    <div class="card">
+                        <h3>"Outstanding Creative Partnership"</h3>
+                        <p>"Working with Tarama was a game-changer for our brand. They brought fresh perspectives and delivered beyond our expectations. Their team understands the pulse of Rwanda's creative landscape."</p>
+                        <p style="margin-top: 1.5rem; font-weight: 600; color: var(--text-accent);">- Jean-Claude Ntezimana, Brand Manager</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Services Page -->
+        <div id="services" class="page">
+            <section class="section">
+                <h2>Our Services</h2>
+                <div class="grid grid-2">
+                    <div class="card">
+                        <h3>Event Management</h3>
+                        <p>Complete event planning and execution services for cultural festivals, corporate events, and artistic showcases. We handle everything from venue selection to technical production.</p>
+                        <ul>
+                            <li>Festival & Concert Production</li>
+                            <li>Corporate Event Planning</li>
+                            <li>Wedding & Social Events</li>
+                            <li>Technical & Audio/Visual Services</li>
+                            <li>VR/AR Experience Design</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h3>Creative Projects</h3>
+                        <p>Innovative artistic collaborations that showcase Rwanda's rich cultural heritage while embracing contemporary creative expression and future technologies.</p>
+                        <ul>
+                            <li>Brand Creative Campaigns</li>
+                            <li>Cultural Documentation</li>
+                            <li>Artistic Installations</li>
+                            <li>Content Creation & Media</li>
+                            <li>Digital Art & NFT Creation</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h3>Talent Supply</h3>
+                        <p>Access to Rwanda's most talented creatives across various disciplines, vetted and ready to bring your vision to life with next-generation skills.</p>
+                        <ul>
+                            <li>Musicians & Performers</li>
+                            <li>Visual Artists & Designers</li>
+                            <li>Photographers & Videographers</li>
+                            <li>Event Staff & Coordinators</li>
+                            <li>Digital Artists & Developers</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h3>Community Building</h3>
+                        <p>Fostering connections within Rwanda's creative ecosystem through networking events, workshops, and collaborative platforms powered by advanced technology.</p>
+                        <ul>
+                            <li>Creative Workshops</li>
+                            <li>Networking Events</li>
+                            <li>Mentorship Programs</li>
+                            <li>Skill Development Training</li>
+                            <li>Virtual Collaboration Spaces</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Gallery Page -->
+        <div id="gallery" class="page">
+            <section class="section">
+                <h2>Gallery</h2>
+                <p class="text-center mb-4" style="font-size: 1.2rem; color: var(--text-secondary);">Explore moments from our past events and creative projects</p>
+                <div class="gallery-grid">
+                    <div class="gallery-item">🎭 Festival Performance</div>
+                    <div class="gallery-item">🎨 Art Installation</div>
+                    <div class="gallery-item">🏢 Corporate Event</div>
+                    <div class="gallery-item">🎉 Cultural Celebration</div>
+                    <div class="gallery-item">🎓 Workshop Session</div>
+                    <div class="gallery-item">👥 Community Gathering</div>
+                    <div class="gallery-item">🤝 Creative Collaboration</div>
+                    <div class="gallery-item">🎬 Behind the Scenes</div>
+                    <div class="gallery-item">🌟 Award Ceremony</div>
+                    <div class="gallery-item">🚀 Innovation Showcase</div>
+                    <div class="gallery-item">💫 VR Experience</div>
+                    <div class="gallery-item">🎪 Interactive Installation</div>
+                </div>
+            </section>
+        </div>
+
+        <!-- About Page -->
+        <div id="about" class="page">
+            <section class="section">
+                <h2>About Tarama Rwanda</h2>
+                <div class="grid grid-2">
+                    <div class="card">
+                        <h3>Our Mission</h3>
+                        <p>To empower Rwanda's creative community by providing platforms, opportunities, and resources that celebrate artistic expression and cultural heritage while fostering innovation and technological advancement in the creative arts.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Our Vision</h3>
+                        <p>To be the leading creative hub in Rwanda and East Africa, recognized for our exceptional events, innovative projects, and commitment to nurturing the next generation of creative talent through cutting-edge technology and sustainable practices.</p>
+                    </div>
+                </div>
+                
+                <h2 style="margin-top: 6rem;">Our Team</h2>
+                <div class="grid grid-3">
+                    <div class="card">
+                        <h3>🎨 Creative Director</h3>
+                        <p>Leading our creative vision and ensuring every project reflects our commitment to excellence, innovation, and the fusion of traditional Rwandan artistry with futuristic design principles.</p>
+                    </div>
+                    <div class="card">
+                        <h3>📅 Event Manager</h3>
+                        <p>Coordinating logistics and bringing creative concepts to life through seamless event execution, utilizing advanced project management tools and sustainable event technologies.</p>
+                    </div>
+                    <div class="card">
+                        <h3>🌍 Community Coordinator</h3>
+                        <p>Building bridges within Rwanda's creative community and fostering meaningful connections through digital platforms, virtual reality spaces, and immersive collaboration tools.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Events Page -->
+        <div id="events" class="page">
+            <section class="section">
+                <h2>Upcoming Events</h2>
+                <div class="grid grid-2">
+                    <div class="card">
+                        <h3>🎨 Rwandan Arts Festival 2024</h3>
+                        <p>A celebration of contemporary Rwandan arts featuring exhibitions, performances, and workshops with immersive VR experiences and digital art showcases.</p>
+                        <p style="margin-top: 1.5rem; color: var(--text-accent); font-weight: 600; font-size: 1.1rem;">📅 Date: March 15-17, 2024</p>
+                        <p style="color: var(--text-secondary);">📍 Location: Kigali Convention Centre</p>
+                    </div>
+                    <div class="card">
+                        <h3>🎓 Creative Minds Workshop</h3>
+                        <p>Monthly workshop series for emerging artists and creative professionals to develop their skills using the latest digital tools and collaborative technologies.</p>
+                        <p style="margin-top: 1.5rem; color: var(--text-accent); font-weight: 600; font-size: 1.1rem;">📅 Date: Every last Saturday</p>
+                        <p style="color: var(--text-secondary);">📍 Location: Tarama Creative Hub</p>
+                    </div>
+                    <div class="card">
+                        <h3>🌙 Cultural Heritage Night</h3>
+                        <p>An evening celebrating Rwanda's rich cultural traditions through music, dance, and storytelling, enhanced with holographic displays and interactive experiences.</p>
+                        <p style="margin-top: 1.5rem; color: var(--text-accent); font-weight: 600; font-size: 1.1rem;">📅 Date: April 20, 2024</p>
+                        <p style="color: var(--text-secondary);">📍 Location: Kimisagara Youth Centre</p>
+                    </div>
+                    <div class="card">
+                        <h3>🚀 Innovation in Arts Conference</h3>
+                        <p>Bringing together artists, tech innovators, and cultural leaders to explore the future of creative expression, featuring AI art, blockchain creativity, and sustainable design.</p>
+                        <p style="margin-top: 1.5rem; color: var(--text-accent); font-weight: 600; font-size: 1.1rem;">📅 Date: May 10-11, 2024</p>
+                        <p style="color: var(--text-secondary);">📍 Location: University of Rwanda</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Store Page -->
+        <div id="store" class="page">
+            <section class="section">
+                <h2>Tarama Store</h2>
+                <p class="text-center mb-4" style="font-size: 1.2rem; color: var(--text-secondary);">Support local artists and get exclusive Tarama merchandise</p>
+                <div class="grid grid-3">
+                    <div class="card store-card">
+                        <h3>👕 Tarama T-Shirt</h3>
+                        <p>Premium cotton t-shirt with our signature holographic logo design that changes color based on light angle.</p>
+                        <p class="price">15,000 RWF</p>
+                        <button class="btn btn-primary" onclick="purchaseItem('Tarama T-Shirt', 15000)">Buy Now</button>
+                    </div>
+                    <div class="card store-card">
+                        <h3>🎓 Creative Workshop Pass</h3>
+                        <p>Access to our monthly creative workshops for one year, including VR training sessions and digital art masterclasses.</p>
+                        <p class="price">50,000 RWF</p>
+                        <button class="btn btn-primary" onclick="purchaseItem('Workshop Pass', 50000)">Buy Now</button>
+                    </div>
+                    <div class="card store-card">
+                        <h3>📅 Rwanda Arts Calendar</h3>
+                        <p>Beautiful interactive digital calendar featuring artwork from local Rwandan artists with AR features and artist stories.</p>
+                        <p class="price">8,000 RWF</p>
+                        <button class="btn btn-primary" onclick="purchaseItem('Arts Calendar', 8000)">Buy Now</button>
+                    </div>
+                    <div class="card store-card">
+                        <h3>🎨 Digital Art NFT Collection</h3>
+                        <p>Exclusive NFT collection showcasing the best of Rwandan digital art, supporting local artists in the blockchain space.</p>
+                        <p class="price">25,000 RWF</p>
+                        <button class="btn btn-primary" onclick="purchaseItem('NFT Collection', 25000)">Buy Now</button>
+                    </div>
+                    <div class="card store-card">
+                        <h3>🎪 VR Experience Pass</h3>
+                        <p>Immersive virtual reality experiences showcasing Rwanda's cultural heritage and contemporary art scenes.</p>
+                        <p class="price">35,000 RWF</p>
+                        <button class="btn btn-primary" onclick="purchaseItem('VR Experience Pass', 35000)">Buy Now</button>
+                    </div>
+                    <div class="card store-card">
+                        <h3>🌟 Tarama Membership</h3>
+                        <p>Premium membership with exclusive access to events, workshops, mentorship programs, and digital collaboration spaces.</p>
+                        <p class="price">100,000 RWF</p>
+                        <button class="btn btn-primary" onclick="purchaseItem('Premium Membership', 100000)">Buy Now</button>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Community Page -->
+        <div id="community" class="page">
+            <section class="section">
+                <h2>Join Our Community</h2>
+                <p class="text-center mb-4" style="font-size: 1.2rem; color: var(--text-secondary);">Connect with fellow creatives and be part of Rwanda's vibrant artistic community</p>
+                
+                <div class="form">
+                    <form id="communityForm">
+                        <div class="form-group">
+                            <label class="form-label" for="name">Full Name</label>
+                            <input type="text" id="name" class="form-input" placeholder="Enter your full name" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="email">Email Address</label>
+                            <input type="email" id="email" class="form-input" placeholder="your.email@example.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="phone">Phone Number</label>
+                            <input type="tel" id="phone" class="form-input" placeholder="+250 XXX XXX XXX" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="skills">Your Creative Skills/Interests</label>
+                            <textarea id="skills" class="form-input form-textarea" placeholder="Tell us about your creative background, skills, or interests. What kind of art do you create? What technologies interest you?"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="experience">Experience Level</label>
+                            <select id="experience" class="form-input" required>
+                                <option value="">Select your experience level</option>
+                                <option value="beginner">Beginner (0-2 years)</option>
+                                <option value="intermediate">Intermediate (2-5 years)</option>
+                                <option value="advanced">Advanced (5-10 years)</option>
+                                <option value="expert">Expert (10+ years)</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Join Community</button>
+                    </form>
+                </div>
+            </section>
+        </div>
+
+        <!-- Blog Page -->
+        <div id="blog" class="page">
+            <section class="section">
+                <h2>Latest News & Updates</h2>
+                <div class="grid grid-2">
+                    <div class="card">
+                        <h3>🌟 Celebrating Rwanda's Creative Renaissance</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 1rem; font-size: 0.9rem;">📅 January 15, 2024</p>
+                        <p>Exploring how Rwanda's creative scene has evolved and the role of community organizations in fostering artistic growth through technology integration and sustainable practices...</p>
+                        <a href="#" class="btn mt-4">Read More</a>
+                    </div>
+                    <div class="card">
+                        <h3>🎓 Upcoming Workshop Series Announcement</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 1rem; font-size: 0.9rem;">📅 January 10, 2024</p>
+                        <p>We're excited to announce our new quarterly workshop series focusing on digital arts, creative entrepreneurship, and emerging technologies like AI and blockchain in the creative space...</p>
+                        <a href="#" class="btn mt-4">Read More</a>
+                    </div>
+                    <div class="card">
+                        <h3>🤝 Partnership with Local Universities</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 1rem; font-size: 0.9rem;">📅 December 28, 2023</p>
+                        <p>Tarama Rwanda has formed partnerships with leading universities to create more opportunities for student artists, including access to cutting-edge creative technologies and mentorship programs...</p>
+                        <a href="#" class="btn mt-4">Read More</a>
+                    </div>
+                    <div class="card">
+                        <h3>📊 Year in Review: 2023 Highlights</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 1rem; font-size: 0.9rem;">📅 December 20, 2023</p>
+                        <p>Looking back at an incredible year of events, collaborations, and community growth. From VR art exhibitions to blockchain workshops, thank you for being part of our journey...</p>
+                        <a href="#" class="btn mt-4">Read More</a>
+                    </div>
+                    <div class="card">
+                        <h3>🚀 The Future of Creative Expression</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 1rem; font-size: 0.9rem;">📅 November 15, 2023</p>
+                        <p>How emerging technologies like AI, VR, and blockchain are revolutionizing the creative landscape in Rwanda and what this means for artists and creators...</p>
+                        <a href="#" class="btn mt-4">Read More</a>
+                    </div>
+                    <div class="card">
+                        <h3>🌍 Sustainable Art Practices</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 1rem; font-size: 0.9rem;">📅 October 30, 2023</p>
+                        <p>Exploring eco-friendly approaches to art creation and event management, featuring renewable energy solutions and sustainable material usage in creative projects...</p>
+                        <a href="#" class="btn mt-4">Read More</a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer id="footer" class="footer hidden">
+        <div class="footer-content">
+            <div>
+                <h3>Tarama Rwanda</h3>
+                <p>Empowering Rwanda's creative community through innovative events, talent development, and cultural celebration powered by next-generation technology.</p>
+                <div class="social-links">
+                    <a href="#" title="Facebook">📘</a>
+                    <a href="#" title="Instagram">📷</a>
+                    <a href="#" title="Twitter">🐦</a>
+                    <a href="#" title="YouTube">📺</a>
+                    <a href="#" title="TikTok">🎵</a>
+                    <a href="#" title="LinkedIn">💼</a>
+                </div>
+            </div>
+            <div>
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#" onclick="showPage('services')">Services</a></li>
+                    <li><a href="#" onclick="showPage('gallery')">Gallery</a></li>
+                    <li><a href="#" onclick="showPage('about')">About Us</a></li>
+                    <li><a href="#" onclick="showPage('events')">Events</a></li>
+                    <li><a href="#" onclick="showPage('community')">Join Community</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3>Services</h3>
+                <ul>
+                    <li>Event Management</li>
+                    <li>Creative Projects</li>
+                    <li>Talent Supply</li>
+                    <li>Community Building</li>
+                    <li>Creative Workshops</li>
+                    <li>VR/AR Experiences</li>
+                </ul>
+            </div>
+            <div>
+                <h3>Contact Info</h3>
+                <p>📍 Kigali, Rwanda</p>
+                <p>📞 +250 788 123 456</p>
+                <p>✉️ info@taramarwanda.com</p>
+                <p>🌐 www.taramarwanda.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Tarama Rwanda. All rights reserved. | Designed for the future, built for today.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Particle System Creation
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 50;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 20 + 's';
+                particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Loading screen functionality
+        let isLoading = true;
+        
+        function initializeApp() {
+            createParticles();
+            
+            // Show loading screen for 5 seconds with GIF
+            setTimeout(() => {
+                document.getElementById('loadingGif').classList.add('hidden');
+                document.getElementById('loadingText').classList.remove('hidden');
+            }, 5000);
+            
+            // Hide loading screen and show main content after 7 seconds total
+            setTimeout(() => {
+                document.getElementById('loadingScreen').classList.add('hidden');
+                document.getElementById('navbar').classList.remove('hidden');
+                document.getElementById('mainContent').classList.remove('hidden');
+                document.getElementById('footer').classList.remove('hidden');
+                isLoading = false;
+                initScrollAnimations();
+            }, 7000);
+        }
+        
+        // Scroll animations
+        function initScrollAnimations() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('revealed');
+                    }
+                });
+            }, observerOptions);
+            
+            document.querySelectorAll('.scroll-reveal').forEach(el => {
+                observer.observe(el);
+            });
+        }
+        
+        // Navigation functionality
+        function showPage(pageId) {
+            if (isLoading) return;
+            
+            // Hide all pages
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Show selected page with animation
+            setTimeout(() => {
+                document.getElementById(pageId).classList.add('active');
+            }, 100);
+            
+            // Close mobile menu if open
+            document.getElementById('navMenu').classList.remove('active');
+            
+            // Scroll to top smoothly
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        function toggleMobileMenu() {
+            const menu = document.getElementById('navMenu');
+            menu.classList.toggle('active');
+        }
+        
+        // Enhanced form handling
+        document.getElementById('communityForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Simulate form submission with loading state
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+            
+            submitBtn.textContent = 'Joining...';
+            submitBtn.disabled = true;
+            
+            setTimeout(() => {
+                alert('🎉 Welcome to the Tarama community! We\'ll be in touch soon with exclusive access to our digital platform and upcoming events.');
+                this.reset();
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            }, 2000);
+        });
+        
+        // Enhanced store functionality with Irembo Pay integration
+        function purchaseItem(itemName, price) {
+            const confirmed = confirm(`🛒 Purchase ${itemName} for ${price.toLocaleString()} RWF?\n\nYou'll be redirected to our secure payment portal powered by Irembo Pay.`);
+            if (confirmed) {
+                // Simulate payment processing
+                alert(`🚀 Redirecting to Irembo Pay for ${itemName} purchase...\n\nPayment Amount: ${price.toLocaleString()} RWF\nMerchant: Tarama Rwanda\nTransaction ID: TR${Date.now()}`);
+                // In a real implementation, this would redirect to Irembo Pay
+                // window.location.href = `https://irembo.pay.gateway?item=${encodeURIComponent(itemName)}&amount=${price}&merchant=tarama`;
+            }
+        }
+        
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(e) {
+            const navbar = document.getElementById('navbar');
+            const menu = document.getElementById('navMenu');
+            const menuBtn = document.querySelector('.mobile-menu-btn');
+            
+            if (!navbar.contains(e.target) && !menuBtn.contains(e.target)) {
+                menu.classList.remove('active');
+            }
+        });
+        
+        // Enhanced scroll effects
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 100) {
+                navbar.style.background = 'rgba(255, 255, 255, 0.1)';
+                navbar.style.backdropFilter = 'blur(30px)';
+            } else {
+                navbar.style.background = 'rgba(255, 255, 255, 0.03)';
+                navbar.style.backdropFilter = 'blur(20px)';
+            }
+        });
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                document.getElementById('navMenu').classList.remove('active');
+            }
+        });
+        
+        // Initialize the app
+        initializeApp();
+        
+        // Add some interactive easter eggs
+        let konami = [];
+        const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'KeyB', 'KeyA'];
+        
+        document.addEventListener('keydown', (e) => {
+            konami.push(e.code);
+            konami = konami.slice(-konamiCode.length);
+            
+            if (konami.join('') === konamiCode.join('')) {
+                document.body.style.animation = 'gradient-shift 1s ease infinite';
+                setTimeout(() => {
+                    document.body.style.animation = '';
+                    alert('🎉 Konami Code activated! You\'ve unlocked the secret developer appreciation mode!');
+                }, 3000);
+            }
+        });
+    </script>
+</body>
+</html>
